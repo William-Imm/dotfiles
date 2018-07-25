@@ -40,6 +40,7 @@ Plug 'vim-airline/vim-airline-themes'
 Plug 'chrisbra/csv.vim'
 Plug 'chriskempson/base16-vim'
 Plug 'edkolev/tmuxline.vim'
+Plug 'edkolev/promptline.vim'
 Plug 'mhinz/vim-grepper'
 Plug 'mattn/emmet-vim', { 'for': ['html', 'css'] }
 Plug 'junegunn/goyo.vim', { 'for': 'markdown' }

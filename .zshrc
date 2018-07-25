@@ -44,8 +44,10 @@ antigen bundle zsh-users/zsh-completions
 antigen bundle jsahlen/tmux-vim-integration.plugin.zsh
 antigen bundle hcgraf/zsh-sudo
 
+antigen bundle rutchkiwi/copyzshell
+
 # Load the theme
-antigen theme qwelyt/endless-dog
+#antigen theme qwelyt/endless-dog
 
 # Tell antigen that you're done
 antigen apply
@@ -58,3 +60,5 @@ BASE16_SHELL="$HOME/.config/base16-shell/"
 alias vim="vimx"
 export MAKEFLAGS="-j8"
 export EDITOR="vim"
+
+source ~/.promptline.sh
