@@ -1,9 +1,9 @@
 set nocompatible
 
 if empty(glob('~/.vim/autoload/plug.vim'))
-	silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
-				\ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-	autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
+			\ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
 endif
 
 call plug#begin('~/.vim/plugged')
@@ -25,22 +25,22 @@ Plug 'tpope/vim-endwise'
 Plug 'sirver/ultisnips' | Plug 'honza/vim-snippets'
 Plug 'ervandew/supertab'
 Plug 'christoomey/vim-tmux-navigator'
-Plug 'xolox/vim-misc'
-Plug 'xolox/vim-easytags' | Plug 'majutsushi/tagbar'
+Plug 'ludovicchabant/vim-gutentags' | Plug 'majutsushi/tagbar'
 Plug 'tpope/vim-dispatch'
 Plug 'tpope/vim-bundler'
 Plug 'tpope/vim-rhubarb'
 Plug 'tpope/vim-rails'
 Plug 'tpope/vim-repeat'
-	Plug 'svermeulen/vim-easyclip'
-	Plug 'tpope/vim-surround'
-	Plug 'tpope/vim-speeddating'
-	Plug 'tpope/vim-unimpaired'
+Plug 'svermeulen/vim-easyclip'
+Plug 'tpope/vim-surround'
+Plug 'tpope/vim-speeddating'
+Plug 'tpope/vim-unimpaired'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'chrisbra/csv.vim'
 Plug 'chriskempson/base16-vim'
 Plug 'edkolev/tmuxline.vim'
+Plug 'mhinz/vim-grepper'
 Plug 'mattn/emmet-vim', { 'for': ['html', 'css'] }
 Plug 'junegunn/goyo.vim', { 'for': 'markdown' }
 autocmd! User goyo.vim echom 'Type :Goyo to enter distraction free mode'
@@ -60,10 +60,6 @@ hi SpecialKey guifg=#303030 guibg=#262626
 set ts=2 sts=2 sw=2 ai si noexpandtab number incsearch hlsearch ruler
 
 let g:ycm_extra_conf_globlist = ['~/Projects/*', '~/git/*']
-
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
 
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
@@ -109,3 +105,9 @@ set undodir=~/.vim/undodir
 set clipboard=unnamedplus
 
 let mapleader=","
+
+nnoremap <leader>g :Grepper -tool git<cr>
+nnoremap <leader>G :Grepper -tool ag<cr>
+
+nmap gs <plug>(GrepperOperator)
+xmap gs <plug>(GrepperOperator)
