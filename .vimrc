@@ -8,10 +8,9 @@ endif
 
 call plug#begin('~/.vim/plugged')
 
-Plug 'junegunn/vim-plug'
 Plug 'tpope/vim-sensible'
-Plug 'ctrlpvim/ctrlp.vim'
-Plug 'scrooloose/nerdtree'
+Plug 'junegunn/vim-plug'
+Plug 'justinmk/vim-dirvish'
 Plug 'scrooloose/syntastic'
 Plug 'godlygeek/tabular'
 Plug 'Valloric/YouCompleteMe', { 'do': './install.py --all' }
@@ -19,11 +18,9 @@ Plug 'rdnetto/YCM-Generator', { 'branch': 'stable' }
 Plug 'jeaye/color_coded', { 'do': 'rm -f CMakeCache.txt && mkdir build && cd build && cmake .. && make && make install' }
 Plug 'sheerun/vim-polyglot'
 Plug 'tpope/vim-fugitive'
-Plug 'airblade/vim-gitgutter'
-Plug 'scrooloose/nerdcommenter'
+Plug 'mhinz/vim-signify'
 Plug 'tpope/vim-endwise'
 Plug 'sirver/ultisnips' | Plug 'honza/vim-snippets'
-Plug 'ervandew/supertab'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'ludovicchabant/vim-gutentags' | Plug 'majutsushi/tagbar'
 Plug 'tpope/vim-dispatch'
@@ -32,10 +29,12 @@ Plug 'tpope/vim-bundler'
 Plug 'tpope/vim-rhubarb'
 Plug 'tpope/vim-rails'
 Plug 'tpope/vim-repeat'
+Plug 'tpope/vim-commentary'
 Plug 'svermeulen/vim-easyclip'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-speeddating'
 Plug 'tpope/vim-unimpaired'
+Plug 'tpope/vim-obsession'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'chrisbra/csv.vim'
@@ -44,8 +43,17 @@ Plug 'edkolev/tmuxline.vim'
 Plug 'edkolev/promptline.vim'
 Plug 'mhinz/vim-grepper'
 Plug 'tpope/vim-rbenv'
-Plug 'tpope/vim-rake' | Plug 'tpope/vim-projectionist'
-Plug 'mattn/emmet-vim', { 'for': ['html', 'css'] }
+Plug 'tpope/vim-sleuth'
+Plug 'tpope/vim-rake'
+Plug 'tpope/vim-projectionist'
+Plug 'tpope/vim-rsi'
+Plug 'tpope/vim-eunuch'
+Plug 'tpope/vim-apathy'
+Plug 'tpope/vim-abolish'
+Plug 'tpope/vim-tbone'
+Plug 'tpope/vim-characterize'
+Plug 'tpope/vim-afterimage'
+Plug 'tpope/vim-jdaddy', { 'for': 'json' }
 Plug 'junegunn/goyo.vim', { 'for': 'markdown' }
 autocmd! User goyo.vim echom 'Type :Goyo to enter distraction free mode'
 
@@ -54,14 +62,14 @@ call plug#end()
 let g:mustache_abbreviations = 1
 
 autocmd StdinReadPre * let s:std_in=1
-autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
+autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | Dirvish | endif
 
-map <C-n> :NERDTreeToggle<CR>
+map <C-n> :Dirvish<CR>
 
-set listchars=tab:>-,trail:-
-hi SpecialKey guifg=#303030 guibg=#262626
+hi SrecialKey guifg=#303030 guibg=#262626
 
-set ts=2 sts=2 sw=2 ai si noexpandtab number incsearch hlsearch ruler
+"set ts=2 sts=2 sw=2 ai si noexpandtab number incsearch hlsearch ruler
+set ai number
 
 let g:ycm_extra_conf_globlist = ['~/Projects/*', '~/git/*']
 
@@ -70,20 +78,9 @@ let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 
-let g:ctrlp_map = '<c-p>'
-let g:ctrlp_cmd = 'CtrlP'
-
 set updatetime=100
 
-" make YCM compatible with UltiSnips (using supertab)
-let g:ycm_key_list_select_completion = ['<C-n>', '<Down>']
-let g:ycm_key_list_previous_completion = ['<C-p>', '<Up>']
-let g:SuperTabDefaultCompletionType = '<C-n>'
-
-" better key bindings for UltiSnipsExpandTrigger
-let g:UltiSnipsExpandTrigger = "<tab>"
-let g:UltiSnipsJumpForwardTrigger = "<tab>"
-let g:UltiSnipsJumpBackwardTrigger = "<s-tab>"
+let g:UltiSnipsExpandTrigger="<c-j>"
 
 nmap <s-t> :TagbarToggle<CR>
 
@@ -115,3 +112,6 @@ nnoremap <leader>G :Grepper -tool ag<cr>
 
 nmap gs <plug>(GrepperOperator)
 xmap gs <plug>(GrepperOperator)
+
+" Use Ctrl+w to remove hightlighting after search
+nnoremap <silent> <C-W> :nohlsearch<C-R>=has('diff')?'<Bar>diffupdate':''<CR><CR><C-W>
