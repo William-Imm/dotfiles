@@ -86,7 +86,8 @@ nmap <s-t> :TagbarToggle<CR>
 
 let g:airline#extensions#tabline#enabled = 1
 let g:airline_powerline_fonts = 1
-let g:airline_theme='base16'
+let g:airline_theme='base16_vim'
+let g:airline_base16_improved_contrast = 1
 let g:airline#extensions#whitespace#enabled = 1
 
 if filereadable(expand("~/.vimrc_background"))
