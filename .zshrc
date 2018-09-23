@@ -1,4 +1,4 @@
-export ZSH_TMUX_AUTOSTART=true
+# export ZSH_TMUX_AUTOSTART=true
 export ZSH_TMUX_AUTOSTART_ONCE=true
 export ZSH_TMUX_AUTOCONNECT=true
 export ZSH_TMUX_AUTOQUIT=true
@@ -58,6 +58,9 @@ BASE16_SHELL="$HOME/.config/base16-shell/"
   eval "$("$BASE16_SHELL/profile_helper.sh")"
 
 alias vim="vimx"
+alias urxvt="urxvt-ml"
+alias urxvtc="urxvt-mlc"
+alias urxvtd="urxvt-mld"
 export MAKEFLAGS="-j8"
 export EDITOR="vim"
 

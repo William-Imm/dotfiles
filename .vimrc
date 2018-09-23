@@ -11,7 +11,6 @@ call plug#begin('~/.vim/plugged')
 Plug 'tpope/vim-sensible'
 Plug 'junegunn/vim-plug'
 Plug 'justinmk/vim-dirvish'
-Plug 'scrooloose/syntastic'
 Plug 'godlygeek/tabular'
 Plug 'Valloric/YouCompleteMe', { 'do': './install.py --all' }
 Plug 'rdnetto/YCM-Generator', { 'branch': 'stable' }
@@ -54,8 +53,8 @@ Plug 'tpope/vim-tbone'
 Plug 'tpope/vim-characterize'
 Plug 'tpope/vim-afterimage'
 Plug 'tpope/vim-jdaddy', { 'for': 'json' }
-Plug 'junegunn/goyo.vim', { 'for': 'markdown' }
-autocmd! User goyo.vim echom 'Type :Goyo to enter distraction free mode'
+" Plug 'junegunn/goyo.vim', { 'for': 'markdown' }
+" autocmd! User goyo.vim echom 'Type :Goyo to enter distraction free mode'
 
 call plug#end()
 
@@ -69,18 +68,20 @@ map <C-n> :Dirvish<CR>
 hi SrecialKey guifg=#303030 guibg=#262626
 
 "set ts=2 sts=2 sw=2 ai si noexpandtab number incsearch hlsearch ruler
-set ai number
+set ts=4 ai number
 
 let g:ycm_extra_conf_globlist = ['~/Projects/*', '~/git/*']
 
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
+" let g:syntastic_always_populate_loc_list = 1
+" let g:syntastic_auto_loc_list = 1
+" let g:syntastic_check_on_open = 1
+" let g:syntastic_check_on_wq = 0
 
 set updatetime=100
 
 let g:UltiSnipsExpandTrigger="<c-j>"
+let g:UltiSnipsJumpForwardTrigger="<c-j>"
+let g:UltiSnipsJumpBackwardTrigger="<c-k>"
 
 nmap <s-t> :TagbarToggle<CR>
 
